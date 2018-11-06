@@ -15,10 +15,12 @@ import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import Navbar from 'components/Navbar';
 import './style.scss';
 
 const App = () => (
   <div className="app-wrapper">
+    <Navbar />
     <Helmet
       titleTemplate="%s - React.js Boilerplate"
       defaultTitle="React.js Boilerplate"

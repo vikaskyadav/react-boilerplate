@@ -4,7 +4,7 @@
  * This is the first thing users see of our App, at the '/' route
  */
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import ReposList from 'components/ReposList';
@@ -29,7 +29,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
     };
 
     return (
-      <article>
+      <Fragment>
         <Helmet>
           <title>Home Page</title>
           <meta name="description" content="A React.js Boilerplate application homepage" />
@@ -57,7 +57,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
             <ReposList {...reposListProps} />
           </section>
         </div>
-      </article>
+      </Fragment>
     );
   }
 }
