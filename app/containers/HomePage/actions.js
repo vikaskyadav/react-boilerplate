@@ -15,7 +15,7 @@
  *    }
  */
 
-import { CHANGE_USERNAME } from './constants';
+import { CHANGE_USERNAME, DATA_LOAD_REQUEST, DATA_LOAD_SUCCESS, DATA_LOAD_ERROR } from './constants';
 
 /**
  * Changes the input field of the form
@@ -30,3 +30,24 @@ export function changeUsername(name) {
     name
   };
 }
+
+export function dataLoadRequest() {
+  return {
+    type: DATA_LOAD_REQUEST
+  };
+}
+
+export function dataLoadSuccess(data) {
+  return {
+    type: DATA_LOAD_SUCCESS,
+    data
+  };
+}
+
+export function dataLoadError(error) {
+  return {
+    type: DATA_LOAD_ERROR,
+    error
+  };
+}
+

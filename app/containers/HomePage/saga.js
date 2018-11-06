@@ -9,6 +9,8 @@ import { reposLoaded, repoLoadingError } from 'containers/App/actions';
 import request from 'utils/request';
 import { makeSelectUsername } from 'containers/HomePage/selectors';
 
+import { dataLoadSuccess, dataLoadError } from './actions';
+import { DATA_LOAD_REQUEST } from './constants';
 /**
  * Github repos request/response handler
  */
@@ -26,6 +28,20 @@ export function* getRepos() {
   }
 }
 
+export function* getData() {
+  // Select username from store
+  // const username = yield select(makeSelectUsername());
+  const requestURL = 'https://jobs.github.com/positions.json?description=python&location=new+york';
+
+  try {
+    // Call our request helper (see 'utils/request')
+    const data = yield call(request, requestURL);
+    yield put(dataLoadSuccess(data));
+  } catch (err) {
+    yield put(dataLoadError(err));
+  }
+}
+
 /**
  * Root saga manages watcher lifecycle
  */
@@ -35,4 +51,5 @@ export default function* githubData() {
   // It returns task descriptor (just like fork) so we can continue execution
   // It will be cancelled automatically on component unmount
   yield takeLatest(LOAD_REPOS, getRepos);
+  yield takeLatest(DATA_LOAD_REQUEST, getData);
 }
