@@ -9,8 +9,8 @@ import {
   makeSelectError
 } from 'containers/App/selectors';
 import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
-import { makeSelectUsername } from './selectors';
+import { changeUsername, dataLoadRequest } from './actions';
+import { makeSelectUsername, getDataFromSelector } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import HomePage from './HomePage';
@@ -20,11 +20,13 @@ const mapDispatchToProps = (dispatch) => ({
   onSubmitForm: (evt) => {
     if (evt !== undefined && evt.preventDefault) evt.preventDefault();
     dispatch(loadRepos());
-  }
+  },
+  loadData: () => dispatch(dataLoadRequest())
 });
 
 const mapStateToProps = createStructuredSelector({
   repos: makeSelectRepos(),
+  data: getDataFromSelector(),
   username: makeSelectUsername(),
   loading: makeSelectLoading(),
   error: makeSelectError()

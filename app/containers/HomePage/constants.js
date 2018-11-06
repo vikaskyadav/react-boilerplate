@@ -10,3 +10,6 @@
  */
 
 export const CHANGE_USERNAME = 'boilerplate/Home/CHANGE_USERNAME';
+export const DATA_LOAD_REQUEST = 'dataLoadRequest';
+export const DATA_LOAD_SUCCESS = 'dataLoadSuccess';
+export const DATA_LOAD_ERROR = 'dataLoadError';
