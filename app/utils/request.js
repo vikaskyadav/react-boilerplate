@@ -1,5 +1,5 @@
-import 'whatwg-fetch';
-
+// import 'whatwg-fetch';
+import fetch from 'isomorphic-fetch'
 /**
  * Parses the JSON returned by a network request
  *
